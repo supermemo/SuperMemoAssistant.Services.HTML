@@ -21,8 +21,8 @@
 // DEALINGS IN THE SOFTWARE.
 // 
 // 
-// Created On:   2019/04/22 15:16
-// Modified On:  2019/04/22 17:39
+// Created On:   2019/04/26 13:42
+// Modified On:  2019/04/26 13:57
 // Modified By:  Alexis
 
 #endregion
@@ -31,16 +31,35 @@
 
 
 using System;
+using System.Drawing;
+using Anotar.Serilog;
+using HtmlAgilityPack;
+using Svg;
 
-namespace SuperMemoAssistant.Services.HTML.Models
+namespace SuperMemoAssistant.Services.HTML
 {
-  [Serializable]
-  public enum UrlPatternType
+  public static class SvgUtils
   {
-    Hostname,
-    StartWith,
-    Contains,
-    EndWith,
-    Regex,
+    #region Methods
+
+    public static Image ToImage(this HtmlNode svgNode)
+    {
+      if (svgNode.Name.ToLower() != "svg")
+        return null;
+
+      try
+      {
+        var svgDoc = SvgDocument.FromSvg<SvgDocument>(svgNode.OuterHtml);
+
+        return svgDoc.Draw();
+      }
+      catch (Exception ex)
+      {
+        LogTo.Warning(ex, "Exception while converting html svg to image");
+        return null;
+      }
+    }
+
+    #endregion
   }
 }
