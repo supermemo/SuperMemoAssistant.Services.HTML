@@ -56,13 +56,13 @@ namespace SuperMemoAssistant.Services.HTML.Extensions
           }
 
         case UrlPatternType.StartWith:
-          return url.StartsWith(urlPattern.Pattern);
+          return url.StartsWith(urlPattern.Pattern, StringComparison.InvariantCultureIgnoreCase);
 
         case UrlPatternType.Contains:
           return url.Contains(urlPattern.Pattern);
 
         case UrlPatternType.EndWith:
-          return url.EndsWith(urlPattern.Pattern);
+          return url.EndsWith(urlPattern.Pattern, StringComparison.InvariantCultureIgnoreCase);
 
         case UrlPatternType.Regex:
           try

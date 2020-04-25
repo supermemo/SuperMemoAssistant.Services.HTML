@@ -44,7 +44,7 @@ namespace SuperMemoAssistant.Services.HTML
 
     public static Image ToImage(this HtmlNode svgNode)
     {
-      if (svgNode.Name.ToLower() != "svg")
+      if (!string.Equals(svgNode.Name, "svg", StringComparison.InvariantCultureIgnoreCase))
         return null;
 
       try
