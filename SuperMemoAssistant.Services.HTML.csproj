@@ -41,7 +41,7 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="CefSharp.OffScreen">
-      <Version>79.1.360</Version>
+      <Version>98.1.210</Version>
     </PackageReference>
     <PackageReference Include="Extensions.System.IO">
       <Version>0.1.0.3</Version>
